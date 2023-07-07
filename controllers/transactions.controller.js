@@ -16,7 +16,7 @@ router.get("/:id", (req, res) => {
     if (!match) {
       res.status(404).json({
         status: false,
-        message: "Id not found",
+        message: "id not found",
       });
     } else {
       res.json({ status: true, data: match });
@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
     if (Object.entries(transaction).length < 1) {
       res
         .status(400)
-        .json({ status: false, message: "You cannot create an empty todo" });
+        .json({ status: false, message: "You cannot create an empty transaction" });
     } else {
       const newTransaction = {
         id: uuidv4(),
@@ -50,7 +50,7 @@ router.delete("/:id", (req, res) => {
     if (foundIndex === -1) {
       res
         .status(404)
-        .json({ status: false, message: "sorry, no todo with this id is found" });
+        .json({ status: false, message: "sorry, no transaction with this id is found" });
     } else {
       let foundTransaction = transactionModel[foundIndex];
   
@@ -72,7 +72,7 @@ router.put("/:id", (req, res) => {
     const foundIndex = transactionModel.findIndex((item) => item.id === id);
   
     if (foundIndex === -1) {
-      res.status(404).json({ status: false, message: "Id not found!" });
+      res.status(404).json({ status: false, message: "id not found!" });
     } else {
       let foundTransaction = transactionModel[foundIndex];
   
